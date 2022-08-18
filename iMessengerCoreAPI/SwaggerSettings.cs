@@ -8,7 +8,7 @@ namespace iMessengerCoreAPI
         public static SwaggerGenOptions getSwaggerOptions()
         {
             var options = new SwaggerGenOptions();
-            
+
 
             return options;
         }
