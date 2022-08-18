@@ -1,7 +1,7 @@
-﻿using Messenger.Domain.Interfaces.Services;
-using Messenger.Infrastructure.Repositories;
+﻿using iMessengerCoreAPI.Interfaces.Repository;
+using iMessengerCoreAPI.Interfaces.Services;
 
-namespace Messenger.iMessengerCoreAPI.Services
+namespace iMessengerCoreAPI.Services
 {
     public class MessengerService : IMessengerService
     {
@@ -16,5 +16,8 @@ namespace Messenger.iMessengerCoreAPI.Services
         {
             return _repository.FindDialogByClients(receivedСlients);
         }
+
+        // CRUD ops...
+        // and other logic
     }
 }

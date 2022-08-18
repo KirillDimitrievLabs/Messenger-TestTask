@@ -1,4 +1,5 @@
-using Messenger.iMessengerCoreAPI.Extensions;
+using iMessengerCoreAPI;
+using iMessengerCoreAPI.Extensions;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -9,6 +10,12 @@ builder.Services.AddSwaggerGen(options =>
 {
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Messenger - Dialog HTTP API",
+        Version = "v1",
+        Description = "The Dialog Service HTTP API"
+    });
 });
 builder.Services.AddServices();
 
@@ -18,7 +25,6 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
 }
 app.MapControllers();
 

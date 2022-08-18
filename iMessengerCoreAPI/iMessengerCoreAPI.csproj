@@ -15,9 +15,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Messenger.Domain.csproj" />
-    <ProjectReference Include="..\Infrastructure\Messenger.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

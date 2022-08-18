@@ -1,15 +1,16 @@
-﻿using Messenger.Domain.Interfaces.Services;
-using Messenger.iMessengerCoreAPI.Services;
-using Messenger.Infrastructure.Repositories;
+﻿using iMessengerCoreAPI.Infrastructure.Repositories;
+using iMessengerCoreAPI.Interfaces.Repository;
+using iMessengerCoreAPI.Interfaces.Services;
+using iMessengerCoreAPI.Services;
 
-namespace Messenger.iMessengerCoreAPI.Extensions
+namespace iMessengerCoreAPI.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             return services
-                .AddScoped<IMessengerRepository, MessengerRepository>()
+                .AddScoped<IMessengerRepository, InMemoryMessengerRepository>()
                 .AddScoped<IMessengerService, MessengerService>();
         }
     }

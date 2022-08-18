@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Messenger.iMessengerCoreAPI.Models
+namespace iMessengerCoreAPI.Models
 {
 
-    public class RGDialogsClientsDTO
+    public class DialogsClients
     {
         public Guid IDUnique { get; set; }
         public Guid IDRGDialog { get; set; }

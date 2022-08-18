@@ -1,18 +1,17 @@
-using Messenger.Domain.Interfaces.Services;
+using iMessengerCoreAPI.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
-namespace Messenger.iMessengerCoreAPI.Controllers
+namespace iMessengerCoreAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class DialogController : ControllerBase
     {
         private readonly IMessengerService _dialogClientService;
-        private readonly ILogger<DialogController> _logger;
 
-        public DialogController(ILogger<DialogController> logger, IMessengerService dialogClientService)
+        public DialogController(IMessengerService dialogClientService)
         {
-            _logger = logger;
             _dialogClientService = dialogClientService;
         }
         /// <summary>
@@ -31,12 +30,13 @@ namespace Messenger.iMessengerCoreAPI.Controllers
         ///     
         ///</remarks>
         /// <response code="201"> Dialog's guid </response>
-        [HttpPost()]
-        public Guid Get([FromBody] IEnumerable<Guid> clients)
+        [HttpPost]
+        //[ProducesResponseType(typeof(Guid), (int)HttpStatusCode.OK)]
+        public ActionResult<Guid> Get([FromBody] IEnumerable<Guid> clients)
         {
             Guid dialogGuid = _dialogClientService.FindDialogByClients(clients);
-            
-            return dialogGuid;
+
+            return Ok(dialogGuid);
         }
     }
 }
