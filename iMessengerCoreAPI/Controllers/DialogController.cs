@@ -28,10 +28,9 @@ namespace iMessengerCoreAPI.Controllers
         ///         "7de3299b-2796-4982-a85b-2d6d1326396e"
         ///     }
         ///     
-        ///</remarks>
+        /// </remarks>
         /// <response code="201"> Dialog's guid </response>
         [HttpPost]
-        //[ProducesResponseType(typeof(Guid), (int)HttpStatusCode.OK)]
         public ActionResult<Guid> Get([FromBody] IEnumerable<Guid> clients)
         {
             Guid dialogGuid = _dialogClientService.FindDialogByClients(clients);

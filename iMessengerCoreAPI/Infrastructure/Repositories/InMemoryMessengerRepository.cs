@@ -18,21 +18,19 @@ namespace iMessengerCoreAPI.Infrastructure.Repositories
 
         public Guid FindDialogByClients(IEnumerable<Guid> receivedСlients)
         {
-            bool isEqual = false;
-            var groupedDialogsClients = Entities.GroupBy(dialogsClients => dialogsClients.IDRGDialog);
-
-            foreach (var dialog in groupedDialogsClients)
-            {
-                isEqual = dialog
+            var foundedDialog = Entities
+                .GroupBy(dialogsClients => dialogsClients.IDRGDialog)
+                .Where(
+                    dialog => dialog
                     .Select(dialogsClients => dialogsClients.IDClient)
                     .OrderBy(clients => clients)
-                    .SequenceEqual(receivedСlients.OrderBy(clients => clients));
+                    .SequenceEqual(receivedСlients.OrderBy(clients => clients))
+                    );
 
-                if (isEqual) return dialog.Key;
-            }
-            return new Guid();
+            Guid foundedDialogGuid = foundedDialog.First().Key;
+
+            return foundedDialog.Any() ? foundedDialogGuid : new Guid();
         }
-
         // CRUD ops...
     }
 }
